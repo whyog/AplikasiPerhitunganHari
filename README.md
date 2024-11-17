@@ -1,6 +1,6 @@
-# 🚀 Aplikasi GUI Perhitungan Diskon
+# 🚀 Aplikasi GUI Perhitungan Hari
 
-Selamat datang di proyek ini! 🎉 Proyek ini adalah implementasi GUI berbasis Java untuk menghitung harga akhir setelah diskon, dengan fitur tambahan seperti memasukkan kode kupon diskon, menggunakan `JSlider` untuk memilih persentase diskon, dan menyimpan riwayat perhitungan diskon.
+Selamat datang di proyek ini! 🎉 Proyek ini adalah implementasi GUI berbasis Java untuk menghitung jumlah hari dalam suatu bulan, dengan fitur tambahan seperti menampilkan informasi hari pertama dan terakhir dalam bulan tersebut, serta menghitung selisih hari antara dua tanggal.
 
 ---
 
@@ -18,18 +18,16 @@ Halo! Nama saya **Nur Yoga Andika** 👋
 ## 📝 Deskripsi Program
 
 Aplikasi ini memungkinkan pengguna:
-1. Memasukkan **harga asli barang** di `JTextField`.
-2. Memilih **persentase diskon** melalui:
-   - **JComboBox**: Untuk memilih persentase diskon standar.
-   - **JSlider**: Sebagai alternatif untuk memilih persentase diskon.
+1. Memilih **bulan** menggunakan `JComboBox`.
+2. Memasukkan **tahun** menggunakan `JSpinner` atau **JCalendar**.
 3. Menekan tombol:
-   - **Hitung:** Untuk menampilkan harga akhir setelah diskon dan jumlah penghematan.
-   - **Hapus:** Untuk menghapus input dan memulai perhitungan ulang.
+   - **Hitung:** Untuk menampilkan jumlah hari dalam bulan yang dipilih.
+   - **Hapus:** Untuk menghapus input dan memulai dari awal.
    - **Keluar:** Untuk menutup aplikasi dengan mudah.
 
 Aplikasi ini juga menyediakan fitur tambahan seperti:
-- Opsi untuk memasukkan kode kupon diskon tambahan.
-- Menyimpan **riwayat perhitungan diskon**.
+- Informasi tentang hari pertama dan terakhir dalam bulan tersebut.
+- Perhitungan selisih hari antara dua tanggal.
 
 ---
 
@@ -39,55 +37,46 @@ Berikut adalah komponen utama yang digunakan dalam aplikasi ini:
 - **JFrame:** Sebagai jendela utama aplikasi.
 - **JPanel:** Mengatur tata letak komponen GUI.
 - **JLabel:** Menampilkan label teks.
-- **JTextField:** Untuk memasukkan harga asli barang.
-- **JComboBox:** Untuk memilih persentase diskon.
-- **JSlider:** Alternatif untuk memilih persentase diskon.
+- **JComboBox:** Untuk memilih bulan.
+- **JSpinner:** Untuk memasukkan tahun.
+- **JCalendar:** Alternatif untuk memilih bulan dan tahun.
 - **JButton:** Untuk melakukan tindakan seperti hitung, hapus, dan keluar.
 
 ---
 
 ## 🔍 Logika Program
 
-1. **Perhitungan Diskon:**
-   - Menghitung harga akhir setelah diskon:  
-     `Harga Akhir = Harga Asli - (Harga Asli * Persentase Diskon / 100)`
-   - Menghitung jumlah penghematan:  
-     `Penghematan = Harga Asli * Persentase Diskon / 100`
+1. **Perhitungan Hari dalam Bulan:**
+   - Menggunakan `LocalDate` untuk menentukan jumlah hari dalam bulan.
+   - Menentukan apakah tahun yang dimasukkan adalah tahun kabisat.
    
-2. **Penanganan Eksepsi:**
-   - Memastikan input hanya berupa angka.
-   - Menangani kondisi ketika input kosong atau tidak valid.
+2. **Penggunaan API Tanggal:**
+   - `LocalDate` untuk manipulasi tanggal.
+   - Menampilkan hari pertama dan terakhir dalam bulan.
 
-3. **Riwayat Perhitungan:**
-   - Menyimpan data perhitungan sebelumnya dalam daftar untuk dilihat kembali.
+3. **Selisih Hari:**
+   - Menggunakan API tanggal untuk menghitung jumlah hari antara dua tanggal.
 
 ---
 
 ## 🎯 Events yang Diimplementasikan
 
 1. **ActionListener:**  
-   - Untuk tombol **Hitung**, memproses perhitungan diskon.  
-   - Untuk tombol **Hapus**, menghapus semua input.
+   - Untuk tombol **Hitung**, memproses perhitungan jumlah hari dalam bulan.  
+   - Untuk tombol **Hapus**, menghapus semua input pengguna.
    - Untuk tombol **Keluar**, menutup aplikasi.
 
-2. **ItemListener:**  
-   - Mengatur persentase diskon berdasarkan pilihan di `JComboBox`.
-
-3. **KeyAdapter:**  
-   - Membatasi input hanya berupa angka di `JTextField`.
-
-4. **ChangeListener:**  
-   - Mengatur persentase diskon berdasarkan perubahan nilai pada `JSlider`.
+2. **ChangeListener:**  
+   - Menggunakan `JSpinner` untuk mendeteksi perubahan tahun.
 
 ---
 
 ## ✨ Variasi
 
-1. Opsi tambahan:
-   - Memasukkan kode kupon diskon tambahan untuk penghematan ekstra.
-   - Menggunakan `JSlider` sebagai alternatif untuk memilih persentase diskon.
-2. Riwayat perhitungan:
-   - Menyimpan hasil perhitungan sebelumnya untuk referensi pengguna.
+1. Memberikan informasi tambahan:
+   - Hari pertama dan terakhir dalam bulan yang dipilih.
+2. Perhitungan selisih hari:
+   - Menghitung jumlah hari antara dua tanggal yang dipilih.
 3. Validasi input:
    - Menampilkan pesan kesalahan jika input kosong atau tidak valid.
 
@@ -95,18 +84,14 @@ Berikut adalah komponen utama yang digunakan dalam aplikasi ini:
 
 ## 🔧 Cara Menggunakan Program
 
-1. Masukkan **harga asli barang** di `JTextField`.
-2. Pilih persentase diskon:
-   - Gunakan **JComboBox** untuk memilih persentase standar.
-   - Atau geser **JSlider** untuk memilih persentase diskon.
+1. Pilih **bulan** menggunakan `JComboBox`.
+2. Masukkan **tahun** menggunakan `JSpinner` atau pilih tanggal menggunakan `JCalendar`.
 3. Tekan tombol:
-   - **Hitung:** Untuk melihat hasil harga akhir setelah diskon dan jumlah penghematan.
+   - **Hitung:** Untuk melihat jumlah hari dalam bulan yang dipilih.
    - **Hapus:** Bersihkan semua input dan mulai dari awal.
    - **Keluar:** Tutup aplikasi dengan mudah.
-4. Jika diaktifkan, masukkan **kode kupon diskon** untuk tambahan penghematan.
-5. Riwayat perhitungan dapat dilihat di panel riwayat.
+4. Informasi tambahan tentang hari pertama dan terakhir dalam bulan akan ditampilkan di bidang yang telah disediakan.
+5. Untuk menghitung selisih hari, pilih dua tanggal menggunakan `JCalendar`.
 
 ---
-
-
 
